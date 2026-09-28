@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/*
+  --------------------------------------------------------------------------------------
+  Paleta: tons de azul bem escuro (oceano) e branco (espuma), com um acento ciano
+  --------------------------------------------------------------------------------------
+*/
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-oceano-950: #050d1a;
+  --color-oceano-900: #0a1628;
+  --color-oceano-850: #0d1c33;
+  --color-oceano-800: #11233f;
+  --color-oceano-700: #1b3254;
+  --color-oceano-600: #28466f;
+  --color-oceano-500: #3d5f8e;
+  --color-oceano-400: #7890b3;
+  --color-oceano-300: #a7bad4;
+  --color-oceano-200: #d3deec;
+  --color-espuma: #ffffff;
+  --color-acento: #5cc8ff;
+  --color-perigo: #ff6b6b;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scrollbar-color: var(--color-oceano-600) transparent;
+  }
+
+  html,
+  body,
+  #__nuxt {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-oceano-950 font-sans text-oceano-200 antialiased;
+  }
+
+  /* números alinhados em colunas (tabelas, métricas) */
+  .numeros {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@utility painel {
+  @apply rounded-2xl border border-oceano-700/70 bg-oceano-900;
+}
+
+@utility rotulo {
+  @apply text-[11px] font-semibold uppercase tracking-wider text-oceano-400;
+}
+
+@utility botao {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition
+    focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+@utility botao-primario {
+  @apply botao bg-espuma text-oceano-950 hover:bg-oceano-200;
+}
+
+@utility botao-secundario {
+  @apply botao border border-oceano-600 text-espuma hover:border-oceano-400 hover:bg-oceano-800;
+}
+
+@utility botao-icone {
+  @apply inline-flex h-8 w-8 items-center justify-center rounded-lg text-oceano-300 transition hover:bg-oceano-700 hover:text-espuma
+    focus-visible:outline-2 focus-visible:outline-acento;
+}
+
+@utility campo {
+  @apply w-full rounded-lg border border-oceano-600 bg-oceano-950 px-3 py-2 text-espuma placeholder:text-oceano-500
+    focus:border-acento focus:outline-none;
+}
+
+/*
+  --------------------------------------------------------------------------------------
+  Ajustes do Leaflet para o tema escuro
+  --------------------------------------------------------------------------------------
+*/
+.leaflet-container {
+  background: var(--color-oceano-950);
+  font-family: var(--font-sans);
+}
+
+.tiles-escuros {
+  filter: invert(1) hue-rotate(185deg) brightness(0.85) contrast(0.9) saturate(0.55);
+}
+
+.leaflet-control-attribution {
+  background: rgb(5 13 26 / 0.75) !important;
+  color: var(--color-oceano-400) !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--color-oceano-300) !important;
+}
+
+.leaflet-bar a {
+  background: var(--color-oceano-900) !important;
+  color: var(--color-espuma) !important;
+  border-color: var(--color-oceano-700) !important;
+}
+
+.leaflet-tooltip.tooltip-pico {
+  background: var(--color-oceano-900);
+  border: 1px solid var(--color-oceano-600);
+  color: var(--color-espuma);
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.leaflet-tooltip.tooltip-pico::before {
+  display: none;
+}
+
+.mapa-selecao {
+  cursor: crosshair !important;
+}
+
+/* pin circular com o score dentro; a cor vem do próprio score */
+.pin-pico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  border: 2px solid #fff;
+  color: #050d1a;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 0 0 3px rgb(5 13 26 / 0.55);
+  transition: transform 0.15s;
+}
+
+.pin-pico:hover {
+  transform: scale(1.12);
+}
+
+.pin-pico.selecionado {
+  border-width: 3px;
+  box-shadow: 0 0 0 4px var(--color-acento);
+  transform: scale(1.15);
+}
+
+.pin-novo {
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  border: 3px dashed #fff;
+  background: rgb(92 200 255 / 0.35);
+}

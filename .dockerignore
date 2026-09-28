@@ -1,0 +1,16 @@
+node_modules/
+.nuxt/
+.output/
+.data/
+.nitro/
+.cache/
+dist/
+.env
+.git/
+.gitignore
+.vscode/
+.cursor/
+docs/
+README.md
+Dockerfile
+.dockerignore

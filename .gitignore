@@ -1,0 +1,24 @@
+# Dependências e build do Nuxt
+node_modules/
+.nuxt/
+.output/
+.data/
+.nitro/
+.cache/
+dist/
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Configurações de editores/IDEs
+.vscode/
+.cursor/
+.idea/
+
+# Arquivos do sistema operacional
+.DS_Store
